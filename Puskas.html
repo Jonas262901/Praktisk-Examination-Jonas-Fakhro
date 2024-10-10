@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puskas Award Röstning</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Puskas Award Röstning</h1>
+    </header>
+    
+    <div class="navigation">
+        <div class="navigation-links">
+            <a href="damer.html">Rösta på Damer</a>
+            <a href="herrar.html">Rösta på Herrar</a>
+            <button onclick="window.location.href='index.html'" class="back-button">Tillbaka till Start</button>
+        </div>
+    </div>
+    
+    <main>
+        <section>
+            <form id="puskasForm">
+                <div class="player-container">
+                    <!-- Här börjar de 10 slumpmässiga Puskas-målen -->
+                    <div class="player-card">
+                        <label>
+                            <input type="radio" name="goal" value="Sam Kerr">
+                            <span>Sam Kerr - Chelsea FC Women (Långskott mot Arsenal)</span>
+                        </label>
+                    </div>
+                    <div class="player-card">
+                        <label>
+                            <input type="radio" name="goal" value="Antony">
+                            <span>Antony - Manchester United (straff mot Arsenal)</span>
+                        </label>
+                    </div>
+                    <div class="player-card">
+                        <label>
+                            <input type="radio" name="goal" value="Caroline Graham Hansen">
+                            <span>Caroline Graham Hansen - FC Barcelona Femení (Vändning och skott mot Arsenal)</span>
+                        </label>
+                    </div>
+                    <div class="player-card">
+                        <label>
+                            <input type="radio" name="goal" value="Kylian Mbappé">
+                            <span>Kylian Mbappé - Paris Saint-Germain (Cykelspark efter hörna mot Arsenal)</span>
+                        </label>
+                    </div>
+                    <div class="player-card">
+                        <label>
+                            <input type="radio" name="goal" value="Vivianne Miedema">
+                            <span>Vivianne Miedema - FC Bayern München (Volleyskott från kanten mot Arsenal)</span>
+                        </label>
+                    </div>
+                    <div class="player-card">
+                        <label>
+                            <input type="radio" name="goal" value="Erling Haaland">
+                            <span>Erling Haaland - Manchester City (Distansskott via ribban mot Arsenal)</span>
+                        </label>
+                    </div>
+                    <div class="player-card">
+                        <label>
+                            <input type="radio" name="goal" value="Lucy Bronze">
+                            <span>Lucy Bronze - FC Barcelona (Långskott från vänsterkanten mot Arsenal)</span>
+                        </label>
+                    </div>
+                    <div class="player-card">
+                        <label>
+                            <input type="radio" name="goal" value="Lionel Messi">
+                            <span>Lionel Messi - Inter Miami CF (Solo och chipmål mot Arsenal)</span>
+                        </label>
+                    </div>
+                    <div class="player-card">
+                        <label>
+                            <input type="radio" name="goal" value="Alexia Putellas">
+                            <span>Alexia Putellas - FC Barcelona Femení (Frispark från långt håll mot Arsenal)</span>
+                        </label>
+                    </div>
+                    <div class="player-card">
+                        <label>
+                            <input type="radio" name="goal" value="Cristiano Ronaldo">
+                            <span>Cristiano Ronaldo - Al-Nassr FC (Stenhårt skott från högerkanten mot Arsenal)</span>
+                        </label>
+                    </div>
+                    <!-- Här tar de slumpmässiga Puskas-målen slut -->
+                </div>
+                <button type="button" onclick="submitVote()">Rösta</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Fotbolls Awards. Alla rättigheter förbehållna.</p>
+    </footer>
+
+    <script>
+        function submitVote() {
+            const selectedGoal = document.querySelector('input[name="goal"]:checked');
+            if (!selectedGoal) {
+                return;
+            }
+            document.querySelector('main').innerHTML = `<p>Tack för din röst! Varför inte rösta i en annan kategori?</p>`;
+            const categories = ['herrar', 'damer', 'puskas'];
+            const currentCategory = 'puskas';
+            const links = categories.filter(cat => cat !== currentCategory)
+                                    .map(cat => `<a href="${cat}.html">Rösta på ${cat.charAt(0).toUpperCase() + cat.slice(1)}</a>`)
+                                    .join(' | ');
+            document.querySelector('main').innerHTML += links;
+        }
+    </script>
+</body>
+</html>
